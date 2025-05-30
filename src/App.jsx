@@ -6,7 +6,7 @@ function App() {
   return (
     <>
     
-      <h1>Vite + React</h1>
+      <h1 className='text-4xl text-red-500 font-bold'>SPORESSO Emporlum</h1>
      
     </>
   )
