@@ -1,8 +1,6 @@
 const AddCoffee = () => {
   return (
-    <div>
-      <h2>add coffee</h2>
-
+    <div className="flex items-center justify-center min-h-screen bg-base-200">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <form className="card-body">
           <div className="form-control">
