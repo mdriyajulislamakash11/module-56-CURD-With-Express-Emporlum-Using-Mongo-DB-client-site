@@ -1,4 +1,21 @@
 const AddCoffee = () => {
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+
+    const name = form.name.value;
+    const supplier = form.supplier.value;
+    const taste = form.taste.value;
+    const chef = form.chef.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    const photo = form.photo.value;
+
+    const newCoffee = { name, supplier, taste, chef, category, details, photo };
+    console.log(newCoffee);
+  };
+
   return (
     <div className="min-h-screen bg-base-200 flex items-center justify-center py-10 px-4">
       <div className="w-full max-w-3xl bg-base-100 p-8 rounded-xl shadow-lg">
@@ -12,13 +29,17 @@ const AddCoffee = () => {
           </p>
         </div>
 
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form
+          onSubmit={handleFormSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
           <div className="form-control">
             <label className="label">
               <span className="label-text">Name</span>
             </label>
             <input
               type="text"
+              name="name"
               placeholder="Enter coffee name"
               className="input input-bordered"
               required
@@ -31,6 +52,7 @@ const AddCoffee = () => {
             </label>
             <input
               type="text"
+              name="chef"
               placeholder="Enter chef name"
               className="input input-bordered"
               required
@@ -43,6 +65,7 @@ const AddCoffee = () => {
             </label>
             <input
               type="text"
+              name="supplier"
               placeholder="Enter supplier name"
               className="input input-bordered"
               required
@@ -55,6 +78,7 @@ const AddCoffee = () => {
             </label>
             <input
               type="text"
+              name="taste"
               placeholder="Enter taste"
               className="input input-bordered"
               required
@@ -67,6 +91,7 @@ const AddCoffee = () => {
             </label>
             <input
               type="text"
+              name="category"
               placeholder="Enter category"
               className="input input-bordered"
               required
@@ -79,6 +104,7 @@ const AddCoffee = () => {
             </label>
             <input
               type="text"
+              name="details"
               placeholder="Enter details"
               className="input input-bordered"
               required
@@ -91,6 +117,7 @@ const AddCoffee = () => {
             </label>
             <input
               type="text"
+              name="photo"
               placeholder="Enter photo URL"
               className="input input-bordered"
               required
