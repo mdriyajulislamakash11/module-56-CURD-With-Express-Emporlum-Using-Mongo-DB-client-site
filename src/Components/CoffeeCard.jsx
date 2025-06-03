@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const CoffeeCard = ({ coffee }) => {
+const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
   const { _id, name, photo, details, category, chef, taste, supplier } =
     coffee || {};
+
+
 
   const handleDelete = (_id) => {
     console.log(_id);
@@ -32,6 +34,9 @@ const CoffeeCard = ({ coffee }) => {
                 icon: "success",
               });
             }
+  
+            const remining = coffees.filter((cof) => cof?._id !== _id);
+            setCoffees(remining);
           });
       }
     });

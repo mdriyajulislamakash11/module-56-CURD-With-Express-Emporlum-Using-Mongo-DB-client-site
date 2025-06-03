@@ -3,12 +3,12 @@ import "./App.css";
 import Banner from "./Components/Banner";
 import Navber from "./Components/Navber";
 import CoffeeCard from "./Components/CoffeeCard";
+import { useState } from "react";
 
 function App() {
+  const loadedData = useLoaderData();
+  const [coffees, setCoffees] = useState(loadedData);
 
-  const coffees = useLoaderData()
-
- 
   return (
     <>
       <div>
@@ -23,18 +23,18 @@ function App() {
         </div>
       </div>
 
-    <h2 className="text-3xl font-semibold text-center">Hot Coffees Store</h2>
+      <h2 className="text-3xl font-semibold text-center">Hot Coffees Store</h2>
 
-    <div className="grid md:grid-cols-2 m-4 w-10/12 mx-auto">
-      {
-        coffees.map((coffee) => <CoffeeCard key={coffee._id} coffee={coffee}></CoffeeCard>
-)
-      }
-    </div>
-
-
-
-
+      <div className="grid md:grid-cols-2 m-4 w-10/12 mx-auto">
+        {coffees.map((coffee) => (
+          <CoffeeCard
+            key={coffee._id}
+            coffee={coffee}
+            coffees={coffees}
+            setCoffees={setCoffees}
+          ></CoffeeCard>
+        ))}
+      </div>
     </>
   );
 }

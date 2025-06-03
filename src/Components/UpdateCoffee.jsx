@@ -1,17 +1,17 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateCoffee = () => {
   const coffee = useLoaderData();
-  console.log(coffee)
+  console.log(coffee);
+  const navigate = useNavigate();
   const { _id, name, supplier, taste, chef, category, details, photo } = coffee;
 
   const handleUpdateForm = (event) => {
     event.preventDefault();
 
-
- const form = event.target;
+    const form = event.target;
 
     const name = form.name.value;
     const supplier = form.supplier.value;
@@ -21,9 +21,17 @@ const UpdateCoffee = () => {
     const details = form.details.value;
     const photo = form.photo.value;
 
-    const updatedCoffee = {_id, name, supplier, taste, chef, category, details, photo };
+    const updatedCoffee = {
+      _id,
+      name,
+      supplier,
+      taste,
+      chef,
+      category,
+      details,
+      photo,
+    };
     console.log(updatedCoffee);
-
 
     fetch(`http://localhost:5000/coffees/${_id}`, {
       method: "PUT",
@@ -43,6 +51,7 @@ const UpdateCoffee = () => {
             confirmButtonText: "OK",
           });
         }
+        navigate("/");
       });
   };
 
