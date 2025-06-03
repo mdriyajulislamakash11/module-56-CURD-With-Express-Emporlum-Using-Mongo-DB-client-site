@@ -27,7 +27,8 @@ function App() {
 
     <div className="grid md:grid-cols-2 m-4">
       {
-        coffees.map((coffee) => <CoffeeCard key={coffee._id}>{coffee}</CoffeeCard>)
+        coffees.map((coffee) => <CoffeeCard key={coffee._id} coffee={coffee}></CoffeeCard>
+)
       }
     </div>
 
