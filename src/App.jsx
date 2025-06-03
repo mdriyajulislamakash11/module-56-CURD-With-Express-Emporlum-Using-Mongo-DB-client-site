@@ -25,7 +25,7 @@ function App() {
 
     <h2 className="text-3xl font-semibold text-center">Hot Coffees Store</h2>
 
-    <div>
+    <div className="grid md:grid-cols-2 m-4">
       {
         coffees.map((coffee) => <CoffeeCard key={coffee._id}>{coffee}</CoffeeCard>)
       }
