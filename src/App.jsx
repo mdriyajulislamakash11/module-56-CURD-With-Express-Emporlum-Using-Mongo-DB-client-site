@@ -1,4 +1,5 @@
 import './App.css'
+import Banner from './Components/Banner'
 import Navber from './Components/Navber'
 
 function App() {
@@ -12,7 +13,10 @@ function App() {
       <Navber />
     </nav>
     
-      <h1 className='text-4xl text-red-500 font-bold'>SPORESSO Emporlum</h1>
+     {/* Banner */}
+     <div className='w-11/12 mx-auto mb-24'>
+      <Banner />
+     </div>
      
     </>
   )
