@@ -6,6 +6,9 @@ import AddCoffee from "./Components/AddCoffee.jsx";
 import UpdateCoffee from "./Components/UpdateCoffee.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./Components/MainLayout.jsx";
+import AuthProvider from "./firebase/AuthProvider.jsx";
+import Register from "./Components/Register.jsx";
+import Login from "./Components/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,12 +30,22 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/coffees/${params.id}`),
       },
+      {
+        path: "/register",
+        element: <Register />
+      },
+      {
+        path: "/login",
+        element: <Login />
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );
