@@ -15,8 +15,8 @@ const Navber = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/myProfile" activeClassName="text-blue-500">
-          My Profile
+        <NavLink to="/register" activeClassName="text-blue-500">
+          Register
         </NavLink>
       </li>
       <li>
