@@ -1,9 +1,8 @@
 import { useLoaderData } from "react-router-dom";
 import "./App.css";
-import Banner from "./Components/Banner";
-import Navber from "./Components/Navber";
 import CoffeeCard from "./Components/CoffeeCard";
 import { useState } from "react";
+import Banner from "./Components/Banner";
 
 function App() {
   const loadedData = useLoaderData();
@@ -11,16 +10,9 @@ function App() {
 
   return (
     <>
-      <div>
-        {/* Navber */}
-        <nav>
-          <Navber />
-        </nav>
-
-        {/* Banner */}
-        <div className="w-11/12 mx-auto mb-10">
-          <Banner />
-        </div>
+      {/* Banner */}
+      <div className="w-11/12 mx-auto mb-10">
+        <Banner />
       </div>
 
       <h2 className="text-3xl font-semibold text-center">Hot Coffees Store</h2>
