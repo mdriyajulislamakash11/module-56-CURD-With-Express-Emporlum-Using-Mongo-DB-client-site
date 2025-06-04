@@ -5,6 +5,10 @@ const Users = () => {
   const loadedUsers = useLoaderData();
   const [users, setUsers] = useState(loadedUsers);
 
+  const handleDelet = (_id) => {
+    console.log(_id)
+  }
+
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -13,8 +17,9 @@ const Users = () => {
           <tr>
             <th></th>
             <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
+            <th>Email</th>
+            <th>Time Info</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +30,11 @@ const Users = () => {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.createdAt}</td>
+              <td>
+                {/* <button className="btn btn-secondary px-6 mx-4">V</button> */}
+                <button className="btn btn-primary px-6 mx-4">E</button>
+                <button onClick={() => handleDelet(user?._id)} className="btn px-6 btn-warning">X</button>
+              </td>
             </tr>
           ))}
         </tbody>

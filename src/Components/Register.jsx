@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../firebase/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -14,29 +15,35 @@ const Register = () => {
     console.log(email, password);
 
     createUser(email, password)
-    .then(result => {
+      .then((result) => {
         console.log(result.user);
 
         const createdAt = result?.user?.metadata?.creationTime;
 
-        const newUser = {name, email, createdAt}
+        const newUser = { name, email, createdAt };
 
         fetch("http://localhost:5000/users", {
-            method: "POST",
-            headers: {
-                "content-type" : "application/json"
-            },
-            body: JSON.stringify(newUser)
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newUser),
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        })
-
-    })
-    .catch(error => {
-        console.log(error)
-    })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.insertedId) {
+              Swal.fire({
+                title: "User Create Successfully!",
+                icon: "success",
+                draggable: true,
+              });
+            }
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
