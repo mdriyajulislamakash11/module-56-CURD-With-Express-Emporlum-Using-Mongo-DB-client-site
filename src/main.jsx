@@ -9,6 +9,7 @@ import MainLayout from "./Components/MainLayout.jsx";
 import AuthProvider from "./firebase/AuthProvider.jsx";
 import Register from "./Components/Register.jsx";
 import Login from "./Components/Login.jsx";
+import Users from "./Components/Users.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,11 +33,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <Register />
+        element: <Register />,
       },
       {
         path: "/login",
-        element: <Login />
+        element: <Login />,
+      },
+      {
+        path: "/user",
+        element: <Users />,
+        loader: () => fetch(`http://localhost:5000/users`),
       },
     ],
   },

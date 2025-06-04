@@ -16,7 +16,10 @@ const Register = () => {
     createUser(email, password)
     .then(result => {
         console.log(result.user);
-        const newUser = {name, email}
+
+        const createdAt = result?.user?.metadata?.creationTime;
+
+        const newUser = {name, email, createdAt}
 
         fetch("http://localhost:5000/users", {
             method: "POST",

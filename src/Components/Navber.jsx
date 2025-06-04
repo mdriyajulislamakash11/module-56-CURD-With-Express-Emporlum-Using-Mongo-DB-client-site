@@ -20,8 +20,8 @@ const Navber = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/myAppointments" activeClassName="text-blue-500">
-          My Appointments
+        <NavLink to="/user" activeClassName="text-blue-500">
+          Users
         </NavLink>
       </li>
     </>
