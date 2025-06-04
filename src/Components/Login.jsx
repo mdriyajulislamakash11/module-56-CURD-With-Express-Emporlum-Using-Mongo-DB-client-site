@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../firebase/AuthProvider";
 
 const Login = () => {
+    const {loginUser} = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -9,7 +11,13 @@ const Login = () => {
         const password = e.target.password.value;
         
         console.log({email, password})
-        
+
+        // login user
+        loginUser(email, password)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
     }
 
 
@@ -17,7 +25,7 @@ const Login = () => {
   return (
     <div>
       <div className="max-w-md mx-auto mt-10 p-6  rounded shadow">
-        <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">Log In</h2>
         <p className="text-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
           placeat, doloribus!
