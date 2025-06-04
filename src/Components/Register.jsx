@@ -7,6 +7,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
 
@@ -14,7 +15,21 @@ const Register = () => {
 
     createUser(email, password)
     .then(result => {
-        console.log(result.user)
+        console.log(result.user);
+        const newUser = {name, email}
+
+        fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+                "content-type" : "application/json"
+            },
+            body: JSON.stringify(newUser)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+
     })
     .catch(error => {
         console.log(error)
@@ -30,6 +45,15 @@ const Register = () => {
           placeat, doloribus!
         </p>
         <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block mb-1">Name</label>
+            <input
+              type="name"
+              name="name"
+              className="w-full border px-3 py-2 rounded"
+              required
+            />
+          </div>
           <div>
             <label className="block mb-1">email</label>
             <input
