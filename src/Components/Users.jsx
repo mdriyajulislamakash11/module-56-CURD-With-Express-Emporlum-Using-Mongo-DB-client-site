@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Users = () => {
@@ -60,9 +60,12 @@ const Users = () => {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.createdAt}</td>
+              <td>{user.lastLoginTime}</td>
               <td>
                 {/* <button className="btn btn-secondary px-6 mx-4">V</button> */}
+                <Link to={`/updatedUser/${user._id}`}>
                 <button className="btn btn-primary px-6 mx-4">E</button>
+                </Link>
                 <button
                   onClick={() => handleDelet(user?._id)}
                   className="btn px-6 btn-warning"

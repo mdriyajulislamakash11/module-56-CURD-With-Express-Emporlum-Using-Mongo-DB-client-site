@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../firebase/AuthProvider";
 
 const Navber = () => {
+  const { user, logOut } = useContext(AuthContext);
   const links = (
     <>
-     <li>
+      <li>
         <NavLink to="/" activeClassName="text-blue-500">
           Home
         </NavLink>
@@ -60,7 +62,18 @@ const Navber = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to={"/login"} className="btn">Login</Link>
+        {user ? (
+          <>
+            <small>{user.email}</small>
+            <button className="btn btn-accent " onClick={logOut}>
+              LogOut
+            </button>
+          </>
+        ) : (
+          <Link to="/login" className="btn btn-accent">
+            LogIn
+          </Link>
+        )}
       </div>
     </div>
   );

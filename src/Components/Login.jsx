@@ -2,25 +2,39 @@ import React, { useContext } from "react";
 import { AuthContext } from "../firebase/AuthProvider";
 
 const Login = () => {
-    const {loginUser} = useContext(AuthContext);
+  const { loginUser } = useContext(AuthContext);
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log({ email, password });
 
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        
-        console.log({email, password})
+    // login user
+    loginUser(email, password)
+      .then((result) => {
+        console.log(result.user);
 
-        // login user
-        loginUser(email, password)
+
+        const lastLoginTime = result?.user?.metadata?.lastSignInTime;
+        const loginInfo = {email, lastLoginTime}
+
+        fetch(`http://localhost:5000/users/${email}`, {
+            method: "PATCH",
+            headers: {
+                "content-type" : "application/json"
+            },
+            body: JSON.stringify(loginInfo)
+        })
         .then(res => res.json())
         .then(data => {
             console.log(data)
         })
-    }
-
-
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -30,7 +44,7 @@ const Login = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
           placeat, doloribus!
         </p>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label className="block mb-1">email</label>
             <input
