@@ -19,7 +19,7 @@ const Users = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/${_id}`, {
+        fetch(`https://server-mu-ten-68.vercel.app/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -64,7 +64,7 @@ const Users = () => {
               <td>
                 {/* <button className="btn btn-secondary px-6 mx-4">V</button> */}
                 <Link to={`/updatedUser/${user._id}`}>
-                <button className="btn btn-primary px-6 mx-4">E</button>
+                  <button className="btn btn-primary px-6 mx-4">E</button>
                 </Link>
                 <button
                   onClick={() => handleDelet(user?._id)}

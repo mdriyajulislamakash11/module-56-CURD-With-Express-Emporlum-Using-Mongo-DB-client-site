@@ -33,7 +33,7 @@ const UpdateCoffee = () => {
     };
     console.log(updatedCoffee);
 
-    fetch(`http://localhost:5000/coffees/${_id}`, {
+    fetch(`https://server-mu-ten-68.vercel.app/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
